@@ -53,9 +53,10 @@ function App() {
   }
 
   //Hier soll eine Funktion erstellt werden, die input eingabe saved oder so
-  function submitEdit(id){
-    
-   
+  function submitEdit(id, editState){
+    const newTodos = [...todos];
+    newTodos.find(todo => todo.id === id).name = editState;
+    setTodos(newTodos);
   }
 
   //Löschen von Todo

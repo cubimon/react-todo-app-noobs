@@ -13,12 +13,13 @@ function Todo(props) {
     function handleTodoClick() {
         props.umschaltenTodo(props.todo.id)
     }
-    
+
     return (
         <div>
             {props.todo.id === isEditState? (
                 <input 
                 type="text"
+                defaultValue={props.todo.name}
                 onChange={(e)=>setEdit(e.target.value)}
                 />
             ) : (
@@ -33,7 +34,7 @@ function Todo(props) {
             </>
 
         { props.todo.id === isEditState ? (
-        <button onClick={props.submitEdit(props.todo.id)}>Save</button>
+        <button onClick={() => {props.submitEdit(props.todo.id, editState);setIsEdit(false);}}>Save</button>
         ) : (
             <button onClick={() => setIsEdit(props.todo.id)}>Edit</button>
         )}
